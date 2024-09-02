@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\News;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -14,10 +15,16 @@ class NewsFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition(): array
+    protected $model = News::class;
+
+    public function definition()
     {
         return [
-            //
+            'title' => $this->faker->sentence,
+            'slug' => $this->faker->slug,
+            'content' => $this->faker->paragraphs(3, true),
+            'image' => 'https://via.placeholder.com/600x400',
+            'status' => $this->faker->randomElement(['draft', 'published', 'archived']),
         ];
     }
 }
