@@ -7,6 +7,8 @@
 @stop
 
 @section('content')
+    @include('partials.alerts')
+
     <div class="container">
         <a href="{{ route('users.create') }}" class="btn btn-success mb-3">Add New User</a>
 
@@ -44,4 +46,12 @@
             {{ $users->links() }}
         </div>
     </div>
+@stop
+
+@section('js')
+    <script>
+        setTimeout(function() {
+            $('.alert').alert('close');
+        }, 3000);
+    </script>
 @stop

@@ -29,8 +29,14 @@ class UserController extends Controller
 
     public function store(StoreUserRequest $request)
     {
-        $this->userService->createUser($request->validated());
-        return redirect()->route('users.index')->with('success', 'User created successfully.');
+        try {
+            $this->userService->createUser($request->validated());
+            session()->flash('success', 'User created successfully.');
+        } catch (\Exception $e) {
+            session()->flash('error', 'Failed to create user.');
+        }
+
+        return redirect()->route('users.index');
     }
 
     public function edit(User $user)
@@ -40,13 +46,25 @@ class UserController extends Controller
 
     public function update(UpdateUserRequest $request, User $user)
     {
-        $this->userService->updateUser($user, $request->validated());
-        return redirect()->route('users.index')->with('success', 'User updated successfully.');
+        try {
+            $this->userService->updateUser($user, $request->validated());
+            session()->flash('success', 'User updated successfully.');
+        } catch (\Exception $e) {
+            session()->flash('error', 'Failed to update user.');
+        }
+
+        return redirect()->route('users.index');
     }
 
     public function destroy(User $user)
     {
-        $this->userService->deleteUser($user);
-        return redirect()->route('users.index')->with('success', 'User deleted successfully.');
+        try {
+            $this->userService->deleteUser($user);
+            session()->flash('success', 'User deleted successfully.');
+        } catch (\Exception $e) {
+            session()->flash('error', 'Failed to delete user.');
+        }
+
+        return redirect()->route('users.index');
     }
 }
