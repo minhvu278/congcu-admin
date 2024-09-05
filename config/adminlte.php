@@ -343,6 +343,11 @@ return [
             'url' => 'tags',
             'icon' => 'fas fa-fw fa-tag',
         ],
+        [
+            'text' => 'Articles',
+            'url' => 'articles',
+            'icon' => 'fas fa-fw fa-newspaper',
+        ],
 //        [
 //            'text' => 'change_password',
 //            'url' => 'admin/settings',
