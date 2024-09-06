@@ -339,6 +339,11 @@ return [
             'icon' => 'fas fa-fw fa-list',
         ],
         [
+            'text' => 'Tags',
+            'url' => 'tags',
+            'icon' => 'fas fa-fw fa-tag',
+        ],
+        [
             'text' => 'Articles',
             'url' => 'articles',
             'icon' => 'fas fa-fw fa-list',
