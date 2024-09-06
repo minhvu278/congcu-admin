@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -25,7 +26,8 @@ class ArticleFactory extends Factory
             'image' => 'https://via.placeholder.com/600x400',
             'status' => $this->faker->randomElement(['draft', 'published', 'archived']),
             'is_featured' => $this->faker->boolean,
-            'user_id' => User::factory(),
+            'user_id' => User::inRandomOrder()->first()->id,
+            'category_id' => Category::factory(),
             'published_at' => $this->faker->dateTime,
         ];
     }

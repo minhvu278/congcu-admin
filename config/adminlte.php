@@ -338,6 +338,11 @@ return [
             'url' => 'categories',
             'icon' => 'fas fa-fw fa-list',
         ],
+        [
+            'text' => 'Articles',
+            'url' => 'articles',
+            'icon' => 'fas fa-fw fa-list',
+        ],
 //        [
 //            'text' => 'change_password',
 //            'url' => 'admin/settings',

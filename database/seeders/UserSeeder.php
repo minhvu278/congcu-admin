@@ -12,6 +12,19 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(10)->create();
+        User::factory()->role('admin')->create([
+            'name' => 'Admin User',
+            'email' => 'admin@gmail.com',
+        ]);
+
+        User::factory()->role('author')->create([
+            'name' => 'Author User',
+            'email' => 'author@gmail.com',
+        ]);
+
+        User::factory()->role('subscriber')->create([
+            'name' => 'Subscriber User',
+            'email' => 'subscriber@gmail.com',
+        ]);
     }
 }
