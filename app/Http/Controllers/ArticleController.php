@@ -34,6 +34,7 @@ class ArticleController extends Controller
 
     public function store(StoreArticleRequest $request)
     {
+        \Log::info('Request is_featured:', ['is_featured' => $request->input('is_featured')]);
         $this->articleService->createArticle($request->validated());
         return redirect()->route('articles.index')->with('success', 'Article created successfully.');
     }
@@ -47,6 +48,7 @@ class ArticleController extends Controller
 
     public function update(UpdateArticleRequest $request, Article $article)
     {
+        \Log::info('Request is_featured:', ['is_featured' => $request->input('is_featured')]);
         $this->articleService->updateArticle($article, $request->validated());
         return redirect()->route('articles.index')->with('success', 'Article updated successfully.');
     }

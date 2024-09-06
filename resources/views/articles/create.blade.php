@@ -12,14 +12,14 @@
         <x-input name="title" label="Title" :value="old('title')" />
         <x-input name="slug" label="Slug" :value="old('slug')" />
         <x-ckeditor name="content" :value="old('content', $article->content ?? '')" />
-
         <x-input name="excerpt" label="Excerpt" :value="old('excerpt')" />
         <x-input name="image" label="Image URL" :value="old('image')" />
         <x-input name="category_id" type="select" label="Category" :options="$categories->pluck('name', 'id')" :value="old('category_id')" />
         <x-select2 name="tags" :options="$tags->pluck('name', 'id')" :selected="old('tags', isset($article) ? $article->tags->pluck('id')->toArray() : [])" />
-        <x-input name="status" type="select" label="Status" :options="['draft' => 'Draft', 'published' => 'Published', 'archived']" :value="old('status')" />
+        <x-input name="status" type="select" label="Status" :options="['draft' => 'Draft', 'published' => 'Published', 'archived' => 'Archived']" :value="old('status')" />
         <div class="form-group">
-            <input type="checkbox" name="is_featured" id="is_featured" {{ old('is_featured', $article->is_featured ?? false) ? 'checked' : '' }}>
+            <input type="hidden" name="is_featured" value="0">
+            <input type="checkbox" name="is_featured" id="is_featured" value="1" {{ old('is_featured', $article->is_featured ?? false) ? 'checked' : '' }}>
             <label for="is_featured">Featured Article</label>
         </div>
 

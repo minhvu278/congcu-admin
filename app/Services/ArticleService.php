@@ -14,14 +14,23 @@ class ArticleService
     public function createArticle(array $data)
     {
         $data['user_id'] = auth()->id();
-        $data['is_featured'] = $data['is_featured'] ?? false;
-        return Article::create($data);
+        $article = Article::create($data);
+        if (isset($data['tags'])) {
+            $article->tags()->attach($data['tags']);
+        }
+
+        return $article;
     }
 
     public function updateArticle(Article $article, array $data)
     {
-        $data['is_featured'] = $data['is_featured'] ?? false;
-        return $article->update($data);
+        $article->update($data);
+
+        if (isset($data['tags'])) {
+            $article->tags()->sync($data['tags']);
+        }
+
+        return $article;
     }
 
     public function deleteArticle(Article $article)

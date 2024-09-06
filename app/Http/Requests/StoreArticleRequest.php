@@ -22,6 +22,8 @@ class StoreArticleRequest extends FormRequest
             'status' => 'required|in:draft,published,archived',
             'is_featured' => 'boolean',
             'category_id' => 'required|exists:categories,id',
+            'tags' => 'nullable|array',
+            'tags.*' => 'exists:tags,id',
             'published_at' => 'nullable|date',
         ];
     }
