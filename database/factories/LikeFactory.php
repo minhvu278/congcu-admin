@@ -25,7 +25,7 @@ class LikeFactory extends Factory
         ]);
 
         return [
-            'user_id' => User::factory(),
+            'user_id' => User::inRandomOrder()->first()->id,
             'likeable_id' => $likeableType::factory(),
             'likeable_type' => $likeableType,
             'reactions' => $this->faker->randomElement(['like', 'love', 'haha', 'wow', 'sad', 'angry']),

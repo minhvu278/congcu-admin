@@ -18,6 +18,7 @@ class Article extends Model
         'status',
         'is_featured',
         'user_id',
+        'category_id',
         'published_at',
     ];
 
@@ -26,9 +27,9 @@ class Article extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function categories()
+    public function category()
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsTo(Category::class);
     }
 
     public function tags()

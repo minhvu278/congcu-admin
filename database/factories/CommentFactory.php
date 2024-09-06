@@ -20,7 +20,7 @@ class CommentFactory extends Factory
     {
         return [
             'article_id' => Article::factory(),
-            'user_id' => User::factory(),
+            'user_id' => User::inRandomOrder()->first()->id,
             'content' => $this->faker->paragraph,
             'status' => $this->faker->randomElement(['pending', 'approved', 'rejected']),
             'parent_id' => null,
