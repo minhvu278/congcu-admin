@@ -6,6 +6,10 @@ use App\Models\Tag;
 
 class TagService
 {
+    public function paginate($perPage = 10)
+    {
+        return Tag::orderBy('created_at', 'desc')->paginate($perPage);
+    }
     public function getAllTags()
     {
         return Tag::all();

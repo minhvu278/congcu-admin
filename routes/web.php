@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TagController;
@@ -30,6 +32,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('tags', TagController::class);
     Route::resource('articles', ArticleController::class);
     Route::resource('news', NewsController::class);
+    Route::put('comments/{id}/status', [CommentController::class, 'updateStatus'])->name('comments.updateStatus');
+    Route::resource('comments', CommentController::class);
+    Route::resource('likes', LikeController::class);
 });
 
 require __DIR__.'/auth.php';

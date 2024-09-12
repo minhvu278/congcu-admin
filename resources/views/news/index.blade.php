@@ -1,18 +1,19 @@
 @extends('adminlte::page')
 
-@section('title', 'Articles')
+@section('title', 'News')
 
 @section('content_header')
-    <h1>Articles</h1>
+    <h1>News</h1>
 @stop
 
 @section('content')
     @include('partials.alerts')
-    <a href="{{ route('news.create') }}" class="btn btn-primary">Create News</a>
+    <a href="{{ route('news.create') }}" class="btn btn-success mb-3">Create News</a>
 
     <table class="table table-bordered">
         <thead>
         <tr>
+            <th>ID</th>
             <th>Image</th>
             <th>Title</th>
             <th>Status</th>
@@ -21,8 +22,9 @@
         </tr>
         </thead>
         <tbody>
-        @foreach ($news as $item)
+        @foreach ($news as $index => $item)
             <tr>
+                <td>{{ $index + 1 }}</td>
                 <td>
                     @if($item->image)
                         <img src="{{ asset('storage/' . $item->image) }}" alt="News Image" width="100">

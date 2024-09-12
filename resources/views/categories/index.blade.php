@@ -7,11 +7,7 @@
 @stop
 
 @section('content')
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
+    @include('partials.alerts')
     <a href="{{ route('categories.create') }}" class="btn btn-success mb-3">Add New Category</a>
 
     <table class="table table-bordered">
@@ -24,9 +20,9 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($categories as $category)
+        @foreach($categories as $index => $category)
             <tr>
-                <td>{{ $category->id }}</td>
+                <td>{{ $index + 1 }}</td>
                 <td>{{ $category->name }}</td>
                 <td>{{ $category->slug }}</td>
                 <td>

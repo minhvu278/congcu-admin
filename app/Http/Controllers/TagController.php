@@ -18,7 +18,7 @@ class TagController extends Controller
 
     public function index()
     {
-        $tags = $this->tagService->getAllTags();
+        $tags = $this->tagService->paginate(10);
         return view('tags.index', compact('tags'));
     }
 

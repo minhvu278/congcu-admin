@@ -13,6 +13,7 @@
     <table class="table table-bordered">
         <thead>
         <tr>
+            <th>ID</th>
             <th>Title</th>
             <th>Status</th>
             <th>Category</th>
@@ -23,8 +24,9 @@
         </tr>
         </thead>
         <tbody>
-        @foreach ($articles as $article)
+        @foreach ($articles as $index => $article)
             <tr>
+                <td>{{ $index + 1 }}</td>
                 <td>{{ $article->title }}</td>
                 <td>{{ $article->status }}</td>
                 <td>{{ $article->category->name }}</td>

@@ -306,10 +306,10 @@ return [
         ],
 
         // Sidebar items:
-        [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
-        ],
+//        [
+//            'type' => 'sidebar-menu-search',
+//            'text' => 'search',
+//        ],
         [
             'text' => 'blog',
             'url' => 'admin/blog',
@@ -346,12 +346,22 @@ return [
         [
             'text' => 'Articles',
             'url' => 'articles',
-            'icon' => 'fas fa-fw fa-list',
+            'icon' => 'fas fa-fw fa-newspaper',
         ],
         [
             'text' => 'News',
             'url' => 'news',
-            'icon' => 'fas fa-fw fa-list',
+            'icon' => 'fas fa-regular fa-newspaper',
+        ],
+        [
+            'text' => 'Comments',
+            'url' => 'comments',
+            'icon' => 'fas fa-fw fa-comment',
+        ],
+        [
+            'text' => 'Likes',
+            'url' => 'likes',
+            'icon' => 'fas fa-fw fa-thumbs-up',
         ],
 //        [
 //            'text' => 'change_password',

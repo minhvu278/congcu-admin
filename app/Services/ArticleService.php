@@ -79,7 +79,7 @@ class ArticleService
 
     public function paginate($perPage = 10)
     {
-        return Article::with('category', 'tags', 'user')->paginate($perPage);
+        return Article::with('category', 'tags', 'user')->orderBy('created_at', 'desc')->paginate($perPage);
     }
 
     public function findById($id)

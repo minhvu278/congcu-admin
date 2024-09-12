@@ -9,7 +9,7 @@ class UserService
 {
     public function getPaginatedUsers($perPage = 10)
     {
-        return User::paginate($perPage);
+        return User::orderBy('created_at', 'desc')->paginate($perPage);
     }
 
     public function getAllUsers()
