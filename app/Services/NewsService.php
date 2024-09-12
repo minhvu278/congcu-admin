@@ -64,7 +64,7 @@ class NewsService
 
     public function paginate($perPage = 10)
     {
-        return News::paginate($perPage);
+        return News::orderBy('created_at', 'desc')->paginate($perPage);
     }
 
     public function findById($id)

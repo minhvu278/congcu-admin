@@ -20,9 +20,9 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($tags as $tag)
+        @foreach($tags as $index => $tag)
             <tr>
-                <td>{{ $tag->id }}</td>
+                <td>{{ $index + 1 }}</td>
                 <td>{{ $tag->name }}</td>
                 <td>{{ $tag->slug }}</td>
                 <td>
@@ -37,6 +37,9 @@
         @endforeach
         </tbody>
     </table>
+    <div class="d-flex justify-content-center">
+        {{ $tags->links() }}
+    </div>
 @stop
 
 @section('js')

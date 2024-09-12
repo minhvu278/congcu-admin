@@ -1,14 +1,14 @@
 @extends('adminlte::page')
 
-@section('title', 'Articles')
+@section('title', 'News')
 
 @section('content_header')
-    <h1>Articles</h1>
+    <h1>News</h1>
 @stop
 
 @section('content')
     @include('partials.alerts')
-    <a href="{{ route('news.create') }}" class="btn btn-primary">Create News</a>
+    <a href="{{ route('news.create') }}" class="btn btn-success mb-3">Create News</a>
 
     <table class="table table-bordered">
         <thead>
