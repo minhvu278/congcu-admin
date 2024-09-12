@@ -12,6 +12,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+        User::truncate();
         User::factory()->role('admin')->create([
             'name' => 'Admin User',
             'email' => 'admin@gmail.com',

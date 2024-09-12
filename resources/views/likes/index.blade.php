@@ -10,6 +10,7 @@
     <table class="table table-bordered">
         <thead>
         <tr>
+            <th>ID</th>
             <th>User</th>
             <th>Reaction</th>
             <th>On (Article/Comment)</th>
@@ -17,8 +18,9 @@
         </tr>
         </thead>
         <tbody>
-        @foreach ($likes as $like)
+        @foreach ($likes as $index => $like)
             <tr>
+                <td>{{ $index + 1 }}</td>
                 <td>{{ $like->user->name }}</td>
                 <td>{{ $like->reactions }}</td>
                 <td>{{ $like->likeable->title ?? $like->likeable->content }}</td>

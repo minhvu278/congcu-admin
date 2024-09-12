@@ -20,9 +20,9 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($categories as $category)
+        @foreach($categories as $index => $category)
             <tr>
-                <td>{{ $category->id }}</td>
+                <td>{{ $index + 1 }}</td>
                 <td>{{ $category->name }}</td>
                 <td>{{ $category->slug }}</td>
                 <td>

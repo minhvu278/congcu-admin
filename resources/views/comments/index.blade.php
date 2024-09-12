@@ -11,6 +11,7 @@
     <table class="table table-bordered">
         <thead>
         <tr>
+            <th>ID</th>
             <th>Article</th>
             <th>User</th>
             <th>Content</th>
@@ -19,8 +20,9 @@
         </tr>
         </thead>
         <tbody>
-        @foreach ($comments as $comment)
+        @foreach ($comments as $index => $comment)
             <tr>
+                <td>{{ $index + 1 }}</td>
                 <td>{{ $comment->article->title }}</td>
                 <td>{{ $comment->user->name ?? 'Guest' }}</td>
                 <td>{{ $comment->content }}</td>
@@ -87,26 +89,20 @@
     </div>
 @endsection
 
-@section('js')
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('.btn-edit').click(function () {
-                let commentId = $(this).data('id');
-                let status = $(this).data('status');
-                let content = $(this).data('content');
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.btn-edit').click(function () {
+            let commentId = $(this).data('id');
+            let status = $(this).data('status');
+            let content = $(this).data('content');
 
-                $('#comment-content').val(content);
-                $('#status').val(status);
+            $('#comment-content').val(content);
+            $('#status').val(status);
 
-                $('#editCommentForm').attr('action', '/comments/' + commentId + '/status');
+            $('#editCommentForm').attr('action', '/comments/' + commentId + '/status');
 
-                $('#editCommentModal').modal('show');
-            });
+            $('#editCommentModal').modal('show');
         });
-
-        setTimeout(function() {
-            $('.alert').alert('close');
-        }, 3000);
-    </script>
-@stop
+    });
+</script>

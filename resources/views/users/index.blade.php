@@ -22,9 +22,9 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($users as $user)
+        @foreach($users as $index => $user)
             <tr>
-                <td>{{ $user->id }}</td>
+                <td>{{ $index + 1 }}</td>
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->role }}</td>

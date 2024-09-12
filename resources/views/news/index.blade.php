@@ -13,6 +13,7 @@
     <table class="table table-bordered">
         <thead>
         <tr>
+            <th>ID</th>
             <th>Image</th>
             <th>Title</th>
             <th>Status</th>
@@ -21,8 +22,9 @@
         </tr>
         </thead>
         <tbody>
-        @foreach ($news as $item)
+        @foreach ($news as $index => $item)
             <tr>
+                <td>{{ $index + 1 }}</td>
                 <td>
                     @if($item->image)
                         <img src="{{ asset('storage/' . $item->image) }}" alt="News Image" width="100">
