@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreArticleRequest extends FormRequest
+class   ArticleRequest extends FormRequest
 {
     public function authorize()
     {
@@ -15,16 +15,16 @@ class StoreArticleRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:255',
-            'slug' => 'required|string|max:255|unique:articles',
+            'slug' => 'required|string|unique:articles,slug,' . $this->route('article'),
             'content' => 'required',
-            'excerpt' => 'nullable|string|max:255',
-            'image' => 'nullable|string|max:255',
+            'excerpt' => 'nullable|string',
+            'image' => 'nullable|image',
             'status' => 'required|in:draft,published,archived',
-            'is_featured' => 'boolean',
             'category_id' => 'required|exists:categories,id',
-            'tags' => 'nullable|array',
-            'tags.*' => 'exists:tags,id',
+            'is_featured' => 'boolean',
             'published_at' => 'nullable|date',
+            'tags' => 'nullable|array',
+            'tags.*' => 'exists:tags,id'
         ];
     }
 }

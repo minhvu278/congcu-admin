@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreArticleRequest;
-use App\Http\Requests\UpdateArticleRequest;
-use App\Models\Article;
+use App\Http\Requests\ArticleRequest;
 use App\Models\Category;
 use App\Models\Tag;
 use App\Services\ArticleService;
@@ -21,7 +19,7 @@ class ArticleController extends Controller
 
     public function index(Request $request)
     {
-        $articles = $this->articleService->getPaginatedArticles(10);
+        $articles = $this->articleService->paginate(10);
         return view('articles.index', compact('articles'));
     }
 
@@ -32,30 +30,29 @@ class ArticleController extends Controller
         return view('articles.create', compact('categories', 'tags'));
     }
 
-    public function store(StoreArticleRequest $request)
+    public function store(ArticleRequest $request)
     {
-        \Log::info('Request is_featured:', ['is_featured' => $request->input('is_featured')]);
-        $this->articleService->createArticle($request->validated());
+        $this->articleService->store($request->validated());
         return redirect()->route('articles.index')->with('success', 'Article created successfully.');
     }
 
-    public function edit(Article $article)
+    public function edit($id)
     {
+        $article = $this->articleService->findById($id);
         $categories = Category::all();
         $tags = Tag::all();
         return view('articles.edit', compact('article', 'categories', 'tags'));
     }
 
-    public function update(UpdateArticleRequest $request, Article $article)
+    public function update(ArticleRequest $request, $id)
     {
-        \Log::info('Request is_featured:', ['is_featured' => $request->input('is_featured')]);
-        $this->articleService->updateArticle($article, $request->validated());
+        $this->articleService->update($id, $request->validated());
         return redirect()->route('articles.index')->with('success', 'Article updated successfully.');
     }
 
-    public function destroy(Article $article)
+    public function destroy($id)
     {
-        $this->articleService->deleteArticle($article);
+        $this->articleService->delete($id);
         return redirect()->route('articles.index')->with('success', 'Article deleted successfully.');
     }
 }

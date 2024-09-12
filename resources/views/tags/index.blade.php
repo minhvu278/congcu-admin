@@ -7,11 +7,7 @@
 @stop
 
 @section('content')
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
+    @include('partials.alerts')
     <a href="{{ route('tags.create') }}" class="btn btn-success mb-3">Add New Tag</a>
 
     <table class="table table-bordered">
