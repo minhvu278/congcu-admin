@@ -348,6 +348,11 @@ return [
             'url' => 'articles',
             'icon' => 'fas fa-fw fa-list',
         ],
+        [
+            'text' => 'News',
+            'url' => 'news',
+            'icon' => 'fas fa-fw fa-list',
+        ],
 //        [
 //            'text' => 'change_password',
 //            'url' => 'admin/settings',
