@@ -37,4 +37,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('likes', LikeController::class);
 });
 
+// API
+Route::get('/api/articles', [\App\Http\Controllers\Api\ArticleController::class, 'index']);
+Route::get('/api/articles/featured', [\App\Http\Controllers\Api\ArticleController::class, 'featured']);
+Route::get('/api/articles/titles-images', [\App\Http\Controllers\Api\ArticleController::class, 'featured']);
+Route::get('/api/news', [\App\Http\Controllers\Api\NewsController::class, 'index']);
+
 require __DIR__.'/auth.php';
