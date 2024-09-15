@@ -17,15 +17,26 @@ class ArticleController extends Controller
 
     public function featured()
     {
-        $featuredArticles = Article::where('is_featured', true)->get();
+        $featuredArticles = Article::where('is_featured', true)->select('title', 'image', 'slug')->get();
 
         return response()->json($featuredArticles);
     }
 
     public function titlesAndImages()
     {
-        $articles = Article::select('title', 'image')->get();
+        $articles = Article::select('title', 'image', 'slug')->get();
 
         return response()->json($articles);
+    }
+
+    public function show($slug)
+    {
+        $article = Article::with('category', 'tags', 'user')->where('slug', $slug)->first();
+
+        if (!$article) {
+            return response()->json(['message' => 'Bài viết không tồn tại'], 404);
+        }
+
+        return response()->json($article);
     }
 }

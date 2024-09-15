@@ -13,4 +13,16 @@ class NewsController extends Controller
 
         return response()->json($news);
     }
+
+    public function show($slug)
+    {
+        $news = News::where('slug', $slug)->first();
+
+        if (!$news) {
+            return response()->json(['message' => 'Tin tức không tồn tại'], 404);
+        }
+
+        return response()->json($news);
+    }
+
 }
