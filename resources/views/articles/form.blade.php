@@ -21,7 +21,7 @@
 <!-- Multi select for tags -->
 <div class="form-group">
     <label for="tags">Tags</label>
-    <select name="tags[]" id="tags" class="form-control" multiple>
+    <select name="tags[]" id="tags" class="form-control select2" multiple>
         @foreach ($tags as $tag)
             <option value="{{ $tag->id }}"
                     @if((is_array(old('tags')) && in_array($tag->id, old('tags'))) || (isset($article) && $article->tags->contains($tag->id)))
