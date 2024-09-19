@@ -8,11 +8,10 @@ use App\Models\News;
 class NewsController extends Controller
 {
     public function index()
-    {
-        $news = News::all();
-
-        return response()->json($news);
-    }
+{
+    $news = News::paginate(6);
+    return response()->json($news);
+}
 
     public function show($slug)
     {
