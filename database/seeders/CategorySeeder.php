@@ -4,12 +4,14 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use Illuminate\Database\Seeder;
+use App\Traits\TruncateTable;
 
 class CategorySeeder extends Seeder
 {
+    use TruncateTable;
     public function run()
     {
-        Category::truncate();
+        $this->truncateTable('categories');
 
         $categories = [
             ['name' => 'Công nghệ', 'slug' => 'cong-nghe'],

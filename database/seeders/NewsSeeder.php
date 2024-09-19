@@ -4,12 +4,14 @@ namespace Database\Seeders;
 
 use App\Models\News;
 use Illuminate\Database\Seeder;
+use App\Traits\TruncateTable;
 
 class NewsSeeder extends Seeder
 {
+    use TruncateTable;
     public function run()
     {
-        News::truncate();
+        $this->truncateTable('news');
 
         $news = [
             [
