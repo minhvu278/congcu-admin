@@ -7,12 +7,14 @@ use App\Models\Comment;
 use App\Models\Like;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use App\Traits\TruncateTable;
 
 class LikeSeeder extends Seeder
 {
+    use TruncateTable;
     public function run()
     {
-        Like::truncate();
+        $this->truncateTable('likes');
 
         $article = Article::inRandomOrder()->first();
         $users = User::inRandomOrder()->take(2)->get();

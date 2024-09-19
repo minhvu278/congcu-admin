@@ -6,12 +6,14 @@ use App\Models\Article;
 use App\Models\Category;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use App\Traits\TruncateTable;
 
 class ArticleSeeder extends Seeder
 {
+    use TruncateTable;
     public function run()
     {
-        Article::truncate();
+        $this->truncateTable('articles');
 
         $articles = [
             [

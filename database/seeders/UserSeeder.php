@@ -4,15 +4,18 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use App\Traits\TruncateTable;
+
 
 class UserSeeder extends Seeder
 {
+    use TruncateTable;
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        User::truncate();
+        $this->truncateTable('users');
         User::factory()->role('admin')->create([
             'name' => 'Admin User',
             'email' => 'admin@gmail.com',

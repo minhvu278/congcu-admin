@@ -4,12 +4,15 @@ namespace Database\Seeders;
 
 use App\Models\Tag;
 use Illuminate\Database\Seeder;
+use App\Traits\TruncateTable;
+
 
 class TagSeeder extends Seeder
 {
+    use TruncateTable;
     public function run()
     {
-        Tag::truncate();
+        $this->truncateTable('tags');
 
         $tags = [
             ['name' => 'Công nghệ', 'slug' => 'cong-nghe'],
