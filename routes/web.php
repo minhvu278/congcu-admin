@@ -10,7 +10,7 @@ use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
+Route::get('/admin', function () {
     if (auth()->check()) {
         return redirect()->route('dashboard');
     } else {
