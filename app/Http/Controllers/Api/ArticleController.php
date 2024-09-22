@@ -70,7 +70,7 @@ class ArticleController extends Controller
         $article = Article::with('category', 'tags', 'user')->where('slug', $slug)->first();
 
         if (!$article) {
-            return response()->json(['message' => 'Bài viết không tồn tại'], 404);
+            return response()->json(['message' => 'The article does not exist'], 404);
         }
 
         if ($article->image) {
